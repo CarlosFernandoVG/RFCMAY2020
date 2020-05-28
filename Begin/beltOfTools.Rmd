@@ -22,11 +22,11 @@ Para trabajar con R, solo necesitamos instalar el lenguaje de programación dire
 
 Con RStudio, lograremos hacer scripts y muchas más cosas relacionadas con R y otros lenguajes de programación. Al instalar este programa, no es necesario instalar de manera independiente el lenguaje de programación, con la propia instalación de esta IDE es más que suficiente.
 
-De acuero al sistema operativo que tengan, pueden descarga de la página oficial de [RStudio](https://rstudio.com/products/rstudio/download/) este software (Con la versión gratuita es más que suficiente).
+De acuerdo al sistema operativo que tengan, pueden descarga de la página oficial de [RStudio](https://rstudio.com/products/rstudio/download/) este software (Con la versión gratuita es más que suficiente).
 
 ### LaTex
 
-Además de archivos `.r`que haremos en RStudio, se pueden crear archivos PDF, HTML y hasta Word con la integración del sistema Markdown. Para los archivos HTML, como este donde estan leyendo, no existe gran problema en cuanto a los requerimientos; pero al hacer archivos PDF se requiere que tengan instalado alguna versión de LaTex.
+Además de archivos `.r`que haremos en RStudio, se pueden crear archivos PDF, HTML y hasta Word con la integración del sistema Markdown. Para los archivos HTML, como este donde están leyendo, no existe gran problema en cuanto a los requerimientos; pero al hacer archivos PDF se requiere que tengan instalado alguna versión de LaTex.
 
 Les recomiendo instalar el programa [TeXMaker](https://www.xm1math.net/texmaker/download.html) que les puede ser de utilidad en sesiones futuras para crear archivos directamente en el lenguaje LaTex. El tipo de instalación dependerá de su SO.
 
@@ -36,7 +36,7 @@ No se preocupen de no tener conocimiento de LaTex, poco a poco veremos algunas c
 
 Por el momento, es suficiente con estas herramientas, si tienen algún problema no duden en consultarme, ya sea mediante contacto personal o el correo electrónico que se deja al final de este documento.
 
-Les recomiendo visitar la página de [Rpubs](https://rpubs.com) para ver algunos trabajos que realiza la enorme comunidad de R día a día. También les dejo aquí la [Galería de RMarkdown](https://rmarkdown.rstudio.com/gallery.html) para que visualizen todas las cosas que se pueden lograr con RStudio. 
+Les recomiendo visitar la página de [Rpubs](https://rpubs.com) para ver algunos trabajos que realiza la enorme comunidad de R día a día. También les dejo aquí la [Galería de RMarkdown](https://rmarkdown.rstudio.com/gallery.html) para que visualicen todas las cosas que se pueden lograr con RStudio. 
 
 Finalmente, el contenido de este proyecto estará contenido en un repositorio público de [GitHub](https://github.com/CarlosFernandoVG/RFCMAY2020) donde pueden descargar todo el material. Bien pueden investigar sobre esta herramienta de gestionamiento de proyectos para que la integración entre ese repositorio y su computadora.
 
