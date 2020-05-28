@@ -1,0 +1,23 @@
+---
+title: "beltOfTools"
+author: "Vásquez Guerra Carlos Fernando"
+date: "5/28/2020"
+output: 
+  html_document:
+    df_print: paged
+    highlight: tango
+    code_folding: hide
+    theme: flatly
+    fig_width: 9
+    fig_height: 5
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+¡Hola! aquí comenzamos con 
+
+
+
+Sugerencias y comentarios al correo cvasquezfguerra@gmail.com
