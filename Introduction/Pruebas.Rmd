@@ -1,0 +1,145 @@
+---
+# documentclass: book 
+# classoption: a4paper
+# fontsize: 12pt
+# geometry: "top=1in, left=0.9in, right=1.25in, bottom=1in"
+linkcolor: blue
+title: "Pruebas"
+author: |
+  | Vásquez Guerra Carlos Fernando
+  | Karyme
+date: "6/1/2020"
+urlcolor: blue
+output:
+  pdf_document:
+    df_print: kable
+    fig_caption: yes
+    number_sections: yes
+    toc: yes
+    toc_depth: 5
+    fig_width: 7
+    fig_height: 4
+    keep_tex: yes
+  html_document: 
+    df_print: kable
+    number_sections: yes
+    highlight: espresso
+    code_folding: hide
+    theme: darkly
+    fig_width: 9
+    fig_height: 5
+    toc: true
+    toc_float: true
+    toc_depth: 2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+echo = FALSE,
+fig.pos = 'H',
+fig.align = 'center',
+message = FALSE,
+warning = FALSE )
+```
+
+# Primera parte 
+Hola, este es un texto de prueba [^1]
+
+Este es otro parrafo
+
+Letras en Negritas:
+
+**word**, __word__
+
+Letras en cursiva:
+
+_word_, *word*
+
+`Esto es código`
+
+20^2^~2~
+
+~~Texto tachado~~
+
+Esta es una suma $\sum_{k=1}^nn=\frac{(n-1)(n)}{2}$.
+
+$$
+\sum_{k=1}^nn=\frac{(n-1)(n)}{2}
+$$
+
+```{r}
+library(tidyverse)
+iris %>% ggplot(aes(x = Sepal.Length, y = Petal.Length, color = Species))+geom_point()
+```
+
+
+> La venganza nunca es buena, mata el alma y la envenena
+
+## Tercera
+
+<!--
+Text comment
+Esto no se va a ver
+esto tampoco 
+-->
+
+```{r message=FALSE, warning=FALSE}
+cars %>% head()
+```
+
+```{r}
+x <- 10
+y <- 20
+x+y
+```
+
+Aquí va el resultado `r x+y` y ya 
+
+## segunda parte
+
+[CSS](https://es.wikipedia.org/wiki/Hoja_de_estilos_en_cascada)
+
+![Imagen](keyboard-2223210_640.jpg)
+
+![Imagen](Images/keyboard-2223210_640.jpg)
+
+# Otro
+![Imagen](../Images/keyboard-2223210_640.jpg)
+
++ HOla
++ itme
++ item
+  - item1.1
+  - item1.2
+  
+### Otro subtitulo
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+as & as & 3 & d & 3 \\ \hline
+df & fs & d & s &   \\ \hline
+   &    &   &   &   \\ \hline
+   &    &   &   &   \\ \hline
+\end{tabular}
+\end{table}
+
+#### Otro subitulo
+
+* uno
+  + dos
+    -tres
+  
+1. Primero
+2. Segundo
+3. Tercero
+
+# Otro
+más texto
+
+Para más información consultese [^1]
+
+\LaTeX
+
+
+[^1]: Esta es la referencia $\sum_1^5$ 
