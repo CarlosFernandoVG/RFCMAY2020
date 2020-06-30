@@ -2192,7 +2192,7 @@ Levels: Little &lt; Medium &lt; Big &lt; Jumbo</code></pre>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">integer</a></code></pre></div>
 <pre><code>function (length = 0L) 
 .Internal(vector(&quot;integer&quot;, length))
-&lt;bytecode: 0x7fb0461f0af0&gt;
+&lt;bytecode: 0x7fb12b0d9cf0&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 <p>¿Cómo están hechos los constructores para double, character, boolean y raw? ¿Cómo están hechos los constructores para un complejo y un factor?</p>
 <p>Muchas veces es útil comparar distintos tipos de variables o verificar si estas son de algún tipo en específico. Para ello existen ciertas funciones como <code>is.character()</code>, <code>is.na()</code>, <code>is.double()</code>, etc. En general se tiene este tipo de funciones para cualquier objeto, incluso se tiene <code>is.function()</code>. En el caso de los posibles valores perdidos de un double, hay que evita usar <code>==</code> para verificar los posibles valores como <code>Inf</code> y <code>–Inf</code>. En su lugar usar las funciones <code>is.finite()</code>, <code>is.infinite()</code>, e <code>is.nan()</code>.</p>
@@ -2703,12 +2703,12 @@ dim: c( 5 2 )</code></pre>
 <p>Existe en R la función <code>ifelse()</code> la cual permite trabajar de manera vectorial. Véase el siguiente ejemplo</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1"><span class="co">#Se crea un vector con 15 edades de personas de manera &quot;aleatoria&quot;</span></a>
 <a class="sourceLine" id="cb106-2" data-line-number="2">(edades &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">90</span>, <span class="dt">replace =</span> T, <span class="dt">size =</span> <span class="dv">15</span>))</a></code></pre></div>
-<pre><code> [1] 11 71 85 52 14 13  3  7 65 28 86 36  7 28 56</code></pre>
+<pre><code> [1]  6 64 26 78 67 17 70 48 56  6 24 14 35 29 23</code></pre>
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="kw">ifelse</span>(edades<span class="op">&lt;</span><span class="dv">18</span>, <span class="dt">yes =</span> <span class="st">&quot;Menor de edad&quot;</span>, <span class="dt">no =</span> <span class="st">&quot;Mayor de edad&quot;</span>)</a></code></pre></div>
 <pre><code> [1] &quot;Menor de edad&quot; &quot;Mayor de edad&quot; &quot;Mayor de edad&quot; &quot;Mayor de edad&quot;
- [5] &quot;Menor de edad&quot; &quot;Menor de edad&quot; &quot;Menor de edad&quot; &quot;Menor de edad&quot;
- [9] &quot;Mayor de edad&quot; &quot;Mayor de edad&quot; &quot;Mayor de edad&quot; &quot;Mayor de edad&quot;
-[13] &quot;Menor de edad&quot; &quot;Mayor de edad&quot; &quot;Mayor de edad&quot;</code></pre>
+ [5] &quot;Mayor de edad&quot; &quot;Menor de edad&quot; &quot;Mayor de edad&quot; &quot;Mayor de edad&quot;
+ [9] &quot;Mayor de edad&quot; &quot;Menor de edad&quot; &quot;Mayor de edad&quot; &quot;Menor de edad&quot;
+[13] &quot;Mayor de edad&quot; &quot;Mayor de edad&quot; &quot;Mayor de edad&quot;</code></pre>
 <p>Es decir, que en cada entrada del vector evalúa la expresión dada y en caso de ser cierta la condición, se devuelve, en este caso, el caracter “Menor de edad” y en caso contrario “Mayor de edad”. Véase que la función <code>ifelse()</code> regresa un vector.</p>
 <hr />
 </div>
@@ -3109,12 +3109,12 @@ $b
 <ul>
 <li>Mediante RStudio: Tools &gt; Install.Packages …</li>
 </ul>
-<p>Regularmente, los paquetes usarán en su codificación funciones de otros paquetes, por lo que será necesario instalar todas las librerías de las que depende ese paquete para su correcto uso. Para evitar instalar uno por uno los paquetes de los que dependa alguno, se agrega el argumento <code>dependences=TRUE</code> a la función <code>install.packages()</code>: <code>install.packages(...,dependeces = TRUE)</code>.</p>
-<p>Lo anterior sirve para aquellas librerías que están en el CRAN, pero si no lo están o se desea instalar otra versión de los paquetes, se puede usar la librería <code>devtools</code>, la cual permite instalar un paquete directamente desde su fuente, como es el caso de algunos localizados en github.</p>
+<p>Regularmente, los paquetes usarán en su codificación funciones de otros paquetes, por lo que será necesario instalar todas los paquetes de los que depende para su correcto uso. Para evitar instalar uno por uno los paquetes de los que dependa alguno, se agrega el argumento <code>dependences=TRUE</code> a la función <code>install.packages()</code>: <code>install.packages(...,dependeces = TRUE)</code>.</p>
+<p>Lo anterior sirve para aquellos paquetes que están en el CRAN, pero si no lo están o se desea instalar otra versión de los paquetes, se puede usar <code>devtools</code>, el cual permite instalar un paquete directamente desde su fuente, como es el caso de algunos localizados en github.</p>
 <div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</a>
 <a class="sourceLine" id="cb177-2" data-line-number="2"><span class="kw">library</span>(<span class="st">&quot;devtools&quot;</span>)</a>
 <a class="sourceLine" id="cb177-3" data-line-number="3"><span class="kw">install_github</span>(<span class="st">&quot;hadley/emo&quot;</span>)</a></code></pre></div>
-<p>Al instalar un paquete, este es guardado en el ordenador; ya que los paquetes no son más que archivos y carpetas que pueden contener Scripts, archivos .Rsd (Bases de datos de R) entre otros.</p>
+<p>Al instalar un paquete, este es guardado en el ordenador; ya que los paquetes no son más que archivos y carpetas que pueden contener funciones en Scripts, archivos .Rsd (Bases de datos de R) entre otros.</p>
 <!-- # ```{r, echo = FALSE, out.width="50%"} -->
 <!-- # myimages<-list.files("Images/Packages/", pattern = ".png", full.names = TRUE) -->
 <!-- # include_graphics(myimages) -->
@@ -3125,103 +3125,280 @@ $b
 Ejemplo para el paquete <code>actuar</code>
 </h6>
 </center>
-<!-- ### Miscellaneous -->
-<!-- #### Data frames  -->
-<!-- + head() and tail() -->
-<!-- #### Lectura -->
-<!-- ## Iteración y recursión -->
-<!-- + [R for Data Science](https://r4ds.had.co.nz/iteration.html#for-loops-vs.functionals) -->
-<!-- En caso de que se quieran leer hojas de excel se recomienda el paquete *readxl*. -->
-<!-- ```{r} -->
-<!-- conapo <- read_excel("../data/conapo_2010.xls", sheet = "mun_carencias") -->
-<!-- head(conapo) -->
-<!-- ``` -->
-<!-- Si hay líneas hasta arriba del documento en Excel, por ejemplo, se puede especificar el número de líneas a saltarse y utilizar la función `read_excel` del paquete `readxl`. -->
-<!-- ```{r} -->
-<!-- danish <- read_excel('../data/Danish_data_original.xls',skip = 3) -->
-<!-- ``` -->
-<!-- #### Guardar datos y objectos -->
-<!-- Podemos guardar un data frame en formato *csv* usando la instrucción write_csv. -->
-<!-- ```{r} -->
-<!-- write_csv(conapo, path = "conapo.csv") -->
-<!-- ``` -->
-<!-- No olvidemos leerlos con la función `read_csv()` -->
-<!-- ```{r} -->
-<!-- (mis_dats <- read_csv("mis_diamantes.csv")) -->
-<!-- ``` -->
-<!-- También podemos guardar *objetos* (cualquier cosa) creados en R usando `save_rds` y volverlos a leer con `read_rds`: -->
-<!-- ```{r} -->
-<!-- mi_vector <- c('uno','dos','tres') -->
-<!-- saveRDS(mi_vector,'mi_vector.rds') -->
-<!-- mi_vector2 <- read_rds('mi_vector.rds') -->
-<!-- ``` -->
-<!-- Es importante utilizar `read_rds` y `save_rds` para guardar y leer objetos, ya que el tipo de almacenamiento de estos datos se dice que es **serializable**. Esto hace que el almacenamiento (en forma de bytes) sea más confiable (no haya errores, en especial esto es importante cuando son muchos datos) y la lectura de los datos es más rápida y también más confiable. -->
-<!-- ## Vectorización -->
-<!-- ## Rendimiento -->
-<!-- #### Funciones útiles. -->
-<!-- `attach()` añade un objeto a `search()`, `detach()` lo quita de `search()`. Este objeto puede ser un environment, lista o data frame, permitiendo acceso a su lista de nombres en el environment en el que se esta trabajando. -->
-<!-- ```{r} -->
-<!-- search() -->
-<!-- attach(mtcars) -->
-<!-- search() -->
-<!-- detach(mtcars) -->
-<!-- search() -->
-<!-- ``` -->
-<!-- `library` funciona como `attach`, para quitar un paquete podemos usar `detach` -->
-<!-- ```{r} -->
-<!-- library(pryr) -->
-<!-- detach("package:pryr", unload=T) -->
-<!-- search() -->
-<!-- ``` -->
-<!-- ## Estadística en R -->
-<!-- ```{r eval=TRUE, include=FALSE} -->
-<!-- library(ggplot2) -->
-<!-- library(plotly) -->
-<!-- library(knitr) -->
-<!-- library(dplyr) -->
-<!-- library(reshape2) -->
-<!-- kable(head(diamonds)) -->
-<!-- diamonds_num <- diamonds %>% select(-c(cut, color, clarity)) -->
-<!-- diamonds_cat <- diamonds %>% select(c(cut, color, clarity)) -->
-<!-- kable(head(mtcars)) -->
-<!-- ``` -->
-<!-- ### Estadística Descriptiva -->
-<!-- #### sapply() -->
-<!-- R nos da una amplia gama de funciones para obtener estadísticas descriptivas. Un método para obtenerlas es usar la función `sapply()` con alguna estadística en específico. -->
-<!-- ```{r, message=FALSE, warning=FALSE} -->
-<!-- sapply(diamonds_num, mean, na.rm=TRUE) -->
-<!-- ``` -->
-<!-- Otras funciones que podemos usar con `sapply()` son: `sd`, `var`, `min`, `max`, `median`, `range` y `quantile` -->
-<!-- ```{r, message=FALSE, warning=FALSE} -->
-<!-- sapply(diamonds_num, sd, na.rm=TRUE) -->
-<!-- sapply(diamonds_num, var, na.rm=TRUE) -->
-<!-- sapply(diamonds_num, min, na.rm=TRUE) -->
-<!-- sapply(diamonds_num, max, na.rm=TRUE) -->
-<!-- sapply(diamonds_num, median, na.rm=TRUE) -->
-<!-- sapply(diamonds_num, range, na.rm=TRUE) -->
-<!-- sapply(diamonds_num, quantile, na.rm=TRUE) -->
-<!-- ``` -->
-<!-- #### summary() & fivenum() -->
-<!-- Existen también algunas funciones diseñadas para proporcionar varias estadísticas descriptivas a la vez. -->
-<!-- ```{r, message=FALSE, warning=FALSE} -->
-<!-- # mean,median,25th and 75th quartiles,min,max -->
-<!-- summary(diamonds) -->
-<!-- ``` -->
-<!-- ```{r, message=FALSE, warning=FALSE} -->
-<!-- # Tukey min,lower-hinge, median,upper-hinge,max -->
-<!-- fivenum(diamonds_num %>% data.matrix()) -->
-<!-- ``` -->
-<!-- #### Hmisc  -->
-<!-- ```{r, message=FALSE, warning=FALSE} -->
-<!-- library(Hmisc) -->
-<!-- # n, nmiss, unique, mean, 5,10,25,50,75,90,95th percentiles  -->
-<!-- # 5 más bajos y 5 más altos -->
-<!-- # frequencias y proporciones -->
-<!-- describe(diamonds) -->
-<!-- ``` -->
-<!-- *** -->
-<!-- +[Tibbles vs.data.frame](https://es.r4ds.hadley.nz/tibbles.html) -->
+<p>La ubicación donde el paquete es guardado se le llama <strong><em>library</em></strong> y para identificar donde empieza la busqueda R al cargar un paquete se utiliza el comando <code>.libPaths()</code>. ¿Qué sucede al ejecutar <code>lapply(.libPaths(), dir)</code>?</p>
+<p>Para cargar un paquete se puede utilizar las funciones <code>library()</code> y <code>require</code>. Ambas funciones cargan lo contenido en los paquetes aunque existen pequeñas diferencias entre ambas. Al querer cargar un paquete que no esta instalado, <code>library</code> devolverá un error y <code>require</code> una advertencia, además <code>require</code> regresa un valor booleano dependiendo si se encuentra o no la librería para cargar dicho paquete; esto puede ser útil dentro de funciones para preparar el workspace y sus enlaces. Por ejemplo, en la siguiente función se instala el paquete <code>dplyr</code> en caso de no se tenga la librería o se carga el paquete en caso contrario.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1">preparation &lt;-<span class="st"> </span><span class="cf">function</span>(){</a>
+<a class="sourceLine" id="cb178-2" data-line-number="2">  <span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;dplyr&quot;</span>)){</a>
+<a class="sourceLine" id="cb178-3" data-line-number="3">    <span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</a>
+<a class="sourceLine" id="cb178-4" data-line-number="4">  }</a>
+<a class="sourceLine" id="cb178-5" data-line-number="5">}</a></code></pre></div>
+<p>Al momento de querer usar una función de algún paquete se puede llamar como cualquier función, aunque puede darse el caso de que existan los mismos nombres entre dos o más librerías para una función o hasta el mismo nombre para una función que creó el usuario. En tal caso se puede especificar el paquete con el operador <code>::</code>; por ejemplo <code>stats::chisq.test()</code>.</p>
+<ul>
+<li>¿Para qué sirve la función <code>attach()</code> y <code>detach</code>?</li>
+</ul>
+<hr />
 </div>
+<div id="miscellaneous" class="section level3">
+<h3>Miscellaneous</h3>
+<p>A continuación se dará una serie de funciones y paquetes con los que se puede trabajar en ciertas ocasiones. Aquí no se mencionarán funciones que “vivan” en el “tidyverse” o funciones dedicadas a elementos gráficos, así como funciones relacionadas a temas avanzados de estadística y probabilidad.</p>
+<div id="vectores-1" class="section level4">
+<h4>Vectores</h4>
+<ul>
+<li><code>base::cumsum()</code>: Dado un vector, la función <code>cumsum</code> devuelve la suma acumulada de dicho vector. También se tiene <code>base::cummin()</code>, <code>base::cummax()</code> y <code>base::cumprod()</code>.</li>
+<li><code>base::unique()</code>: Esta función elimina los elementos duplicados en un vector, data frame o un arreglo.</li>
+<li><code>base::sort()</code>: La función <code>sort</code> regresa de manera ordenada su input, el cual debe ser un vector o factor.</li>
+<li><code>base::union()</code>, <code>base::intersect()</code>, <code>base::setdiff()</code> y <code>base::setequal()</code>: Funciones para realizar operaciones de conjuntos en vectores.</li>
+<li><code>package:vctrs</code>: Este paquete ofrece varias funciones útiles en el manejo de vectores, además de que algunas de sus funciones se pueden usar en otro tipo de estructuras de datos.</li>
+</ul>
+</div>
+<div id="matrices-y-data-frames" class="section level4">
+<h4>Matrices y Data frames</h4>
+<ul>
+<li><code>base::rowSums()</code>y <code>base::rowMeans()</code>: Con estas funciones se obtienen la suma o el promedio por renglón en una matriz. Existe el equivalente para las columnas y son más rápidas estas funciones que al aplicar <code>apply</code>.
+<ul>
+<li>¿Qué hace <code>base::rowsum()</code>?</li>
+</ul></li>
+<li><code>utils::head()</code> y <code>utils::tail()</code>: Funciones para obtener las primeras o últimas observaciones de un data frame; también funciona con matrices.</li>
+<li><code>base::split()</code>: Dicha función separa en grupos de acuerdo a una variable.</li>
+<li><code>package:data.table</code>: El paquete <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html">data.table</a> contiene varias funciones para manipular data.tables, los cuales pueden obtenerse fácilmente con un data frame. Las funciones en este paquete son eficientes en memoria y muy rápidas.</li>
+</ul>
+</div>
+<div id="lectura-y-escritura" class="section level4">
+<h4>Lectura y escritura</h4>
+<ul>
+<li><code>base::read.csv()</code>, <code>base::read.delim()</code>, <code>base::read.table()</code> y <code>base::readLines()</code>: Diferentes funciones para leer archivos de texto en distintos formatos.</li>
+<li><code>base::write()</code>, <code>base::csv()</code> y <code>base::table()</code>: Funciones para exportar datos, como un data frame o una matriz, en un formato especifico.</li>
+<li><code>base::saveRDS()</code>: Función para exportar o guardar algún objeto de R. Se puede leer este objeto con la función <code>base::readRDS()</code>. Estas funciones no están optimizadas y existen algunas variantes para estas funciones como <code>readr::save_rds</code> y <code>qs::qsave()</code>. Aún así, este tipo de almacenamiento de datos (en forma de bytes) es de lo más confiable ya que es <a href="https://en.wikipedia.org/wiki/Serialization">serializable</a>. Se recomienda leer el post <a href="https://fromthebottomoftheheap.net/2012/04/01/saving-and-loading-r-objects/">A better way of saving and loading objects in R</a>.</li>
+</ul>
+</div>
+<div id="funciones-estadísticas-y-matemáticas" class="section level4">
+<h4>Funciones estadísticas y matemáticas</h4>
+<ul>
+<li><code>base::sample()</code>: Función para obtener una muestra aleatoria de <span class="math inline">\(n\)</span> números y permutaciones de un conjunto dado.</li>
+<li><code>set.seed()</code>: Función para asignar la semilla para los métodos pseudo aleatorios posteriores.</li>
+<li><code>base::sd()</code>: desviación estándar.</li>
+<li><code>base::var()</code>: varianza.</li>
+<li><code>base::min()</code>: mínimo.</li>
+<li><code>base::max()</code>: máximo.</li>
+<li><code>base::median()</code>: mediana.</li>
+<li><code>base::range()</code>: rango.</li>
+<li><code>base::quantile()</code>: cuantiles.</li>
+</ul>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb179-2" data-line-number="2">data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">v =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">50</span>, <span class="dt">replace =</span> T), </a>
+<a class="sourceLine" id="cb179-3" data-line-number="3">                   <span class="dt">w =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">50</span>, <span class="dt">replace =</span> T), </a>
+<a class="sourceLine" id="cb179-4" data-line-number="4">                   <span class="dt">x =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">50</span>, <span class="dt">replace =</span> T), </a>
+<a class="sourceLine" id="cb179-5" data-line-number="5">                   <span class="dt">y =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">50</span>, <span class="dt">replace =</span> T), </a>
+<a class="sourceLine" id="cb179-6" data-line-number="6">                   <span class="dt">z =</span> <span class="kw">sample</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">25</span>, <span class="ot">NA</span>), <span class="dt">size =</span> <span class="dv">50</span>, <span class="dt">replace =</span> T))</a>
+<a class="sourceLine" id="cb179-7" data-line-number="7"><span class="kw">head</span>(data)</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["v"],"name":[1],"type":["int"],"align":["right"]},{"label":["w"],"name":[2],"type":["int"],"align":["right"]},{"label":["x"],"name":[3],"type":["int"],"align":["right"]},{"label":["y"],"name":[4],"type":["int"],"align":["right"]},{"label":["z"],"name":[5],"type":["int"],"align":["right"]}],"data":[{"1":"6","2":"1","3":"17","4":"NA","5":"13","_rn_":"1"},{"1":"11","2":"15","3":"8","4":"11","5":"22","_rn_":"2"},{"1":"24","2":"6","3":"3","4":"15","5":"21","_rn_":"3"},{"1":"2","2":"2","3":"11","4":"8","5":"20","_rn_":"4"},{"1":"25","2":"6","3":"7","4":"3","5":"19","_rn_":"5"},{"1":"2","2":"10","3":"18","4":"25","5":"24","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="kw">data.frame</span>(<span class="dt">Sd =</span> <span class="kw">sapply</span>(data, sd, <span class="dt">na.rm =</span> T), </a>
+<a class="sourceLine" id="cb180-2" data-line-number="2">           <span class="dt">Varianza =</span> <span class="kw">sapply</span>(data, var, <span class="dt">na.rm=</span><span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb180-3" data-line-number="3">           <span class="dt">Min =</span> <span class="kw">sapply</span>(data, min, <span class="dt">na.rm=</span><span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb180-4" data-line-number="4">           <span class="dt">Max =</span> <span class="kw">sapply</span>(data, max, <span class="dt">na.rm=</span><span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb180-5" data-line-number="5">           <span class="dt">Mediana =</span> <span class="kw">sapply</span>(data, median, <span class="dt">na.rm=</span><span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb180-6" data-line-number="6">           <span class="dt">MissingValues =</span> <span class="kw">sapply</span>(data, <span class="cf">function</span>(x) <span class="kw">sum</span>(<span class="kw">is.na</span>(x))))</a></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Sd"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["Varianza"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Min"],"name":[3],"type":["int"],"align":["right"]},{"label":["Max"],"name":[4],"type":["int"],"align":["right"]},{"label":["Mediana"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["MissingValues"],"name":[6],"type":["int"],"align":["right"]}],"data":[{"1":"7.359459","2":"54.16163","3":"2","4":"25","5":"14.0","6":"0","_rn_":"v"},{"1":"7.845289","2":"61.54857","3":"1","4":"25","5":"8.0","6":"3","_rn_":"w"},{"1":"7.646861","2":"58.47449","3":"1","4":"25","5":"10.0","6":"1","_rn_":"x"},{"1":"7.126090","2":"50.78116","3":"1","4":"25","5":"11.0","6":"4","_rn_":"y"},{"1":"7.176597","2":"51.50355","3":"1","4":"25","5":"14.5","6":"2","_rn_":"z"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<p>Lo anterior es un pequeño resumen cuantitativo de los datos generados, pero se pueden obtener con diferentes funciones como <code>base::sumary()</code>, <code>base::fivenum()</code> y <code>Hmisc::describe()</code>.</p>
+<ul>
+<li><p>Con los paquetes <a href="https://cran.r-project.org/web/packages/naniar/vignettes/getting-started-w-naniar.html"><code>naniar</code></a> y <code>visdata</code> se puede dar tratamiento a los valores perdidos, así como elementos gráficos de resumen sobre estos.</p></li>
+<li><code>base::abs()</code>: Valor absoluto.</li>
+<li><code>base::sqrt()</code>: Raíz cuadrada.</li>
+<li><code>base::exp()</code>: Función exponencial.</li>
+<li><code>base::log()</code>: Logaritmo Natural.</li>
+<li><code>base::log2()</code>, <code>base::log10()</code>, <code>base::log(base)</code>: Logaritmo en diferente base.</li>
+<li><code>base::sin()</code>, <code>base::cos()</code>, <code>base::tan()</code>, <code>base::asin()</code>,..: Funciones trigonométricas.</li>
+<li><code>base::integrate()</code>: Función para encontrar el área debajo de una curva</li>
+<li><code>base::uniroot()</code>: Función para encontrar las raíces de una función.</li>
+<li><code>base::optimse()</code>: Función para encontrar el mínimo o máximo de una función.</li>
+<li><code>base::lfactorial()</code>: Esta función calcular el logaritmo natural del factorial de un número.</li>
+<li><code>base::cut()</code>: Dicha función establece intervalos en todo el rango de valores dados por un vector. ¿El resultado es un factor?</li>
+<li><p><code>base::findInterval()</code>: Misma finalidad de la función <code>cut</code> pero es más rápido que dicha función.</p></li>
+</ul>
+</div>
+<div id="others" class="section level4">
+<h4>Others</h4>
+<ul>
+<li><code>base::object.size()</code>: Esta función regresa una aproximación de la memoria utilizada por un objeto.</li>
+<li><code>base::capture.output()</code>: Dicha función captura la salida de una función en un caracter.</li>
+<li><code>base::readlines()</code>: Lectura de una línea que el usuario ingresa desde la terminal.</li>
+<li><code>base::invisible()</code> y <code>base::withVisible()</code>: En ciertas ocasiones se desea que el resultado de las funciones no sea impreso, en tal case se utiliza la función <code>invisible</code> y para poder visualizarlo la función <code>withVisible()</code>.</li>
+<li><code>try()</code>, <code>suppressWarnnings()</code> y <code>suppressMessages()</code>: Con dichas funciones se puede aplicar el manejo de excepciones.
+<ul>
+<li>Véase la documentación sobre las funciones <code>base::on.exit()</code> y <code>base::stop()</code>.</li>
+</ul></li>
+<li><code>base::traceback()</code>: Al momento de tener un error en alguna función, la función <code>traceback</code> puede ser utilizada para ver los errores en la pila de ejecución.</li>
+<li><code>package:lobstr</code>: Este paquete ofrece varias funciones para el manejo de objetos; como la obtención de un identificador de la dirección de memoria que tiene un objeto, su tamaño en bits, obtener en mejor orden el resultado de ciertas funciones; por ejemplo con <code>lobstr::cst()</code> se obtiene el árbol de la pila de llamadas obtenido por <code>base::traceback()</code> , el tamaño de memoria utilizada en la sesión actual, etc.</li>
+<li><code>package:rlang</code>: Las funciones de este paquete están diseñadas para trabajar con ambientes.</li>
+<li><code>package:profvis</code> y <code>package:bench</code>: Cuando se desea optimizar el funcionamiento del código, es común utilizar funciones para evaluar la rápidez de las funciones o rutinas con las que se trabaja; estos paquetes ayudan a realizar un perfilamiento del código y a realizar microbenchmark en funciones pequeñas. Véase el siguiente <a href="https://www.alexejgossmann.com/benchmarking_r/">enlace</a> para más funciones.</li>
+</ul>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1">var</a></code></pre></div>
+<pre><code>function (x, y = NULL, na.rm = FALSE, use) 
+{
+    if (missing(use)) 
+        use &lt;- if (na.rm) 
+            &quot;na.or.complete&quot;
+        else &quot;everything&quot;
+    na.method &lt;- pmatch(use, c(&quot;all.obs&quot;, &quot;complete.obs&quot;, &quot;pairwise.complete.obs&quot;, 
+        &quot;everything&quot;, &quot;na.or.complete&quot;))
+    if (is.na(na.method)) 
+        stop(&quot;invalid 'use' argument&quot;)
+    if (is.data.frame(x)) 
+        x &lt;- as.matrix(x)
+    else stopifnot(is.atomic(x))
+    if (is.data.frame(y)) 
+        y &lt;- as.matrix(y)
+    else stopifnot(is.atomic(y))
+    .Call(C_cov, x, y, na.method, FALSE)
+}
+&lt;bytecode: 0x7fb12bb931c8&gt;
+&lt;environment: namespace:stats&gt;</code></pre>
+<p>La función anterior calcula la varianza de una variable, en este caso un vector. Véase que al final de la descripción se menciona la palabra <code>bytecode</code>, la cual resulta familiar cuando ya se trabajo en el lenguaje de programación Java. A partir de la versión 2.14 de R, todas las funciones estándar y paquetes fueron pre compilados en bytecode, lo cual otorga rapidez.</p>
+<ul>
+<li>Si el usuario desea compilar alguna función en bytecode lo puede hacer con la función <code>compiler::cmpfun()</code>.</li>
+<li>Si existe la inclusión del compilador bytecode en R ¿Existirá algún método para realizar JIT? Sí.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="iteración-y-recursión" class="section level2">
+<h2>Iteración y Recursión</h2>
+<p>¿Los ciclos son lentos en R? Sí y no. Todo depende de como se utilice.</p>
+<p>Para comprender lo anterior, primero hay que entender como R almacena sus objetos. Para tener un entendimiento completo sobre todas las estructuras, es recomendable leer el capitulo 2 de <a href="https://adv-r.hadley.nz/names-values.html">Advance R</a>; por el momento sólo se dará una introducción sobre como se comportan los vectores y las listas.</p>
+<p>Como ya se habia mencionado, cuando se hace algún objeto en R, como un vector o una lista, a estos se les asigna un nombre para poder identificarlos posteriormente. Véase los siguientes resultados.</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb183-2" data-line-number="2"><span class="kw">tracemem</span>(x)</a></code></pre></div>
+<pre><code>[1] &quot;&lt;0x7fb12f1229b8&gt;&quot;</code></pre>
+<p>El resultado anterior es un identificador de la dirección en formato hexadecimal del vector <code>x</code> en memoria.</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1">y &lt;-<span class="st"> </span>x</a>
+<a class="sourceLine" id="cb185-2" data-line-number="2"><span class="kw">tracemem</span>(y)</a></code></pre></div>
+<pre><code>[1] &quot;&lt;0x7fb12f1229b8&gt;&quot;</code></pre>
+<p>Ahora el nombre “y” esta asociado con la variable <code>x</code>, aunque en realidad los nombres “y” y “x” apuntan hacia un mismo objeto y eso puede verse con los anteriores resultados.</p>
+<p>¿Qué sucederá cuando se modifique algún valor en la variable <code>y</code>? ¿Se modificará en esa posición <code>x</code>?</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1">trace_vec &lt;-<span class="st"> </span><span class="kw">capture.output</span>(y[[<span class="dv">3</span>]] &lt;-<span class="st"> </span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb187-2" data-line-number="2"><span class="kw">cat</span>(<span class="kw">paste</span>(<span class="kw">c</span>(<span class="kw">strsplit</span>(trace_vec[<span class="dv">1</span>],<span class="st">&quot;:&quot;</span>)[[<span class="dv">1</span>]][<span class="dv">1</span>],  <span class="kw">strsplit</span>(trace_vec[<span class="dv">2</span>],<span class="st">&quot;:&quot;</span>)[[<span class="dv">1</span>]][<span class="dv">1</span>]), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<pre><code>tracemem[0x7fb12f1229b8 -&gt; 0x7fb12dd17888]
+tracemem[0x7fb12dd17888 -&gt; 0x7fb12f9a21b8]</code></pre>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" data-line-number="1"><span class="kw">cat</span>(<span class="kw">paste</span>(<span class="kw">c</span>(x[[<span class="dv">3</span>]], y[[<span class="dv">3</span>]]), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<pre><code>3
+10</code></pre>
+<p>Los valores del vector <code>x</code> no se modificaron, solo los de <code>y</code> y las anteriores salidas al modificar el tercer elemento en el vector <code>y</code> son por lo que en R se conoce como <strong><em>Copy-on-modify</em></strong> donde básicamente los vectores no son copiados hasta que estos sean modificados. La primera salida es debido a que se realizo una copia de <strong>todos</strong> los elementos de <code>x</code> y posteriormente se modifico en <code>y</code> el tercer elemento. Véase que <code>x</code> no fue alterado en la ubicación o el identificador en memoria de este.</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1"><span class="kw">tracemem</span>(x)</a></code></pre></div>
+<pre><code>[1] &quot;&lt;0x7fb12f1229b8&gt;&quot;</code></pre>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1"><span class="kw">tracemem</span>(y)</a></code></pre></div>
+<pre><code>[1] &quot;&lt;0x7fb12f9a21b8&gt;&quot;</code></pre>
+<ul>
+<li>¿Si se hubiera modificado algún elemento de <code>x</code> en lugar de <code>y</code>, qué hubiera sucedido?</li>
+</ul>
+<p>Ahora, véase el caso con las listas</p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" data-line-number="1">list_mem &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">uno =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">dos =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb195-2" data-line-number="2">list_mem_copy &lt;-<span class="st"> </span>list_mem</a>
+<a class="sourceLine" id="cb195-3" data-line-number="3"><span class="kw">tracemem</span>(list_mem)</a></code></pre></div>
+<pre><code>[1] &quot;&lt;0x7fb12f594788&gt;&quot;</code></pre>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" data-line-number="1"><span class="kw">tracemem</span>(list_mem_copy)</a></code></pre></div>
+<pre><code>[1] &quot;&lt;0x7fb12f594788&gt;&quot;</code></pre>
+<p>Las listas creadas anteriormente tienen la misma dirección y no sólo eso, si no que cada uno de los elementos de la lista también son los mismos</p>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" data-line-number="1"><span class="kw">cat</span>(<span class="kw">paste</span>(<span class="kw">c</span>(<span class="kw">tracemem</span>(list_mem[[<span class="dv">1</span>]]),</a>
+<a class="sourceLine" id="cb199-2" data-line-number="2"><span class="kw">tracemem</span>(list_mem_copy[[<span class="dv">1</span>]]),</a>
+<a class="sourceLine" id="cb199-3" data-line-number="3"><span class="kw">tracemem</span>(list_mem[[<span class="dv">2</span>]]),</a>
+<a class="sourceLine" id="cb199-4" data-line-number="4"><span class="kw">tracemem</span>(list_mem_copy[[<span class="dv">2</span>]])), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<pre><code>&lt;0x7fb12d84f088&gt;
+&lt;0x7fb12d84f088&gt;
+&lt;0x7fb12d84f168&gt;
+&lt;0x7fb12d84f168&gt;</code></pre>
+<p>¿Qué sucedera cuando se modifique algún elemento en <code>list_mem</code>? ¿Sucederá lo mismo que en los vectores?</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1">trace_list &lt;-<span class="st"> </span><span class="kw">capture.output</span>(list_mem[[<span class="dv">2</span>]] &lt;-<span class="st"> </span><span class="dv">2</span><span class="op">:</span><span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb201-2" data-line-number="2"><span class="kw">cat</span>(<span class="kw">strsplit</span>(trace_list[<span class="dv">1</span>],<span class="st">&quot;:&quot;</span>)[[<span class="dv">1</span>]][<span class="dv">1</span>])</a></code></pre></div>
+<pre><code>tracemem[0x7fb12f594788 -&gt; 0x7fb12faf1788]</code></pre>
+<p>Solo se hizo un cambio en dirección de memoria, ya que en el caso de las listas no se copia todos los elementos, solo se cambia el puntero hacia otro objeto. Véase que en los elementos que no se realizo algúna modificación se sigue apuntando hacia el mismo objeto.</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="kw">cat</span>(<span class="kw">paste</span>(<span class="kw">c</span>(<span class="kw">tracemem</span>(list_mem[[<span class="dv">1</span>]]),</a>
+<a class="sourceLine" id="cb203-2" data-line-number="2"><span class="kw">tracemem</span>(list_mem_copy[[<span class="dv">1</span>]]),</a>
+<a class="sourceLine" id="cb203-3" data-line-number="3"><span class="kw">tracemem</span>(list_mem[[<span class="dv">2</span>]]),</a>
+<a class="sourceLine" id="cb203-4" data-line-number="4"><span class="kw">tracemem</span>(list_mem_copy[[<span class="dv">2</span>]])), <span class="dt">collapse =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>))</a></code></pre></div>
+<pre><code>&lt;0x7fb12d84f088&gt;
+&lt;0x7fb12d84f088&gt;
+&lt;0x7fb1299bf568&gt;
+&lt;0x7fb12d84f168&gt;</code></pre>
+<ul>
+<li>¿Las direcciones de las listas <code>list_mem</code> y <code>list_mem_copy</code> ahora son diferentes?</li>
+</ul>
+<p>En resumen, al modificar algún elemento dentro de un vector, se creó una copia de todos los valores teniendo así dos vectores con diferentes nombres y, cuando se modifica algún elemento en las listas, solo se cambia de dirección el punto correspondiente a ese objeto y los demás enlaces permanecen.</p>
+<p>Cuando se hace algún ciclo donde se este agregando o modificando algún vector, internamente se realizarán copias de todo el vector aunque sólo un elemento sea alterado; en ese caso los ciclos iterativos son lentos, pero cuando se utiliza una lista en lugar de un vector el rendimiento mejora bastante. Hay que recordar que R no fue diseñado para ser rápido, aunque usando listas el rendimiento obtenido será mejor al usar un ciclo.</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1"><span class="kw">library</span>(bench)</a>
+<a class="sourceLine" id="cb205-2" data-line-number="2"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb205-3" data-line-number="3">data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100000</span>, <span class="dt">ncol =</span> <span class="dv">100</span>))</a>
+<a class="sourceLine" id="cb205-4" data-line-number="4">plus2_byVector &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb205-5" data-line-number="5">  <span class="co">#Al usar m[[n]] cuando m es un data.frame, véase que se estan tomando vectores</span></a>
+<a class="sourceLine" id="cb205-6" data-line-number="6">  <span class="cf">for</span>(item <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(x)){</a>
+<a class="sourceLine" id="cb205-7" data-line-number="7">    x[[item]] &lt;-<span class="st"> </span>x[[item]]<span class="op">+</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb205-8" data-line-number="8">  }</a>
+<a class="sourceLine" id="cb205-9" data-line-number="9">  x</a>
+<a class="sourceLine" id="cb205-10" data-line-number="10">}</a>
+<a class="sourceLine" id="cb205-11" data-line-number="11"><span class="kw">kable</span>(bench<span class="op">::</span><span class="kw">mark</span>(<span class="kw">plus2_byVector</span>(data))[<span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;median&quot;</span>, <span class="st">&quot;mem_alloc&quot;</span>, <span class="st">&quot;total_time&quot;</span>)], <span class="dt">format =</span> <span class="st">&quot;markdown&quot;</span>)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">min</th>
+<th align="right">median</th>
+<th align="right">mem_alloc</th>
+<th align="right">total_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1.4ms</td>
+<td align="right">3.32ms</td>
+<td align="right">1.11MB</td>
+<td align="right">454ms</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb206-1" data-line-number="1">plus2_byList &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb206-2" data-line-number="2">  <span class="co">#Al convertir un data.frame en una lista, se agrega un elemento por columna</span></a>
+<a class="sourceLine" id="cb206-3" data-line-number="3">  x &lt;-<span class="st"> </span><span class="kw">as.list</span>(x)</a>
+<a class="sourceLine" id="cb206-4" data-line-number="4">  <span class="cf">for</span>(item <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(x)){</a>
+<a class="sourceLine" id="cb206-5" data-line-number="5">    x[[item]] &lt;-<span class="st"> </span>x[[item]]<span class="op">+</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb206-6" data-line-number="6">  }</a>
+<a class="sourceLine" id="cb206-7" data-line-number="7">  x</a>
+<a class="sourceLine" id="cb206-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb206-9" data-line-number="9"><span class="kw">kable</span>(bench<span class="op">::</span><span class="kw">mark</span>(<span class="kw">plus2_byList</span>(data))[<span class="kw">c</span>(<span class="st">&quot;min&quot;</span>, <span class="st">&quot;median&quot;</span>, <span class="st">&quot;mem_alloc&quot;</span>, <span class="st">&quot;total_time&quot;</span>)], <span class="dt">format =</span> <span class="st">&quot;markdown&quot;</span>)</a></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="right">min</th>
+<th align="right">median</th>
+<th align="right">mem_alloc</th>
+<th align="right">total_time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">150µs</td>
+<td align="right">221µs</td>
+<td align="right">813KB</td>
+<td align="right">290ms</td>
+</tr>
+</tbody>
+</table>
+<p>Otro punto que hay que considerar es que no siempre existirá una manera sencilla de usar algún funcional para remplazar a un ciclo, ya sea al modificar en algún lugar un objeto o al usar recursión, ya que en este último caso se depende de índices o de elementos anteriores que con un funcional no sería sencillo de resolver.</p>
+<hr />
+<p>Finalmente, en R existen algunos problemas cuando se realizan funciones recursivas, los problemas que en general se tienen en lenguajes no funcionales.</p>
+<!-- +[Tibbles vs.data.frame](https://es.r4ds.hadley.nz/tibbles.html) -->
+<!-- ### Recomendaciones de rendimiento -->
+<!-- + Guardar los objetos antes de utilizarlos si son "grandes" -->
+<!-- En el ejemplo que se utilizo para ver la eficiencia de las listas sobre los vectores al hacer un ciclo, se utilizo un data frame que previamente se guardo. Observese lo que sucede si estos son declarados temporalmente  -->
+<!-- ```{r} -->
+<!-- kable(bench::mark(plus2_byVector(data.frame(matrix(1:100000, ncol = 100))))[c("min", "median", "mem_alloc", "total_time")], format = "markdown") -->
+<!-- kable(bench::mark(plus2_byList(data.frame(matrix(1:100000, ncol = 100))))[c("min", "median", "mem_alloc", "total_time")], format = "markdown") -->
+<!-- ``` -->
 </div>
 <div id="ejercicios" class="section level2">
 <h2>Ejercicios</h2>
@@ -3257,7 +3434,7 @@ Ejemplo para el paquete <code>actuar</code>
 <li><p>Utilizando los conocimientos de coerción, la función <code>sum()</code> y lo que sea necesario, determinar cuantos valores <code>NA</code> existen en random_NA.</p></li>
 <li><p>Crea una función que, dado un vector, se determine la cantidad de valores perdidos en él.</p></li>
 <li><p>Crear un función que, dado un número se cree una matriz que contenga solo ese número. El número de renglones y columnas debe también ser dado en los parámetros de la función.</p></li>
-<li><p>Usando algún ciclo, crear una función llamada <code>suma_gauss</code> en la que se tendrá que simular el proceso para la suma de los primeros <span class="math inline">\(n\)</span> números en <span class="math inline">\(\mathbb{N}\)</span>. No se debe utilizar la formula de manera directa.</p></li>
+<li><p><a id="20">Usando algún ciclo, crear una función llamada <code>suma_gauss</code> en la que se tendrá que simular el proceso para la suma de los primeros <span class="math inline">\(n\)</span> números en <span class="math inline">\(\mathbb{N}\)</span>. No se debe utilizar la formula de manera directa.</p></li>
 <li><p>Crear una matriz, sin tener que usar algún ciclo, de 0s y 1s alternados. Aquí un ejemplo</p></li>
 </ol>
 <pre><code>     [,1] [,2] [,3] [,4]
@@ -3307,7 +3484,57 @@ Ejemplo para el paquete <code>actuar</code>
 <li><p>Usando la función <code>which()</code>, obtener los resultados solicitados del ejercicio <a href="#11">11</a>.</p></li>
 <li><p>Usando alguna función de la familia <code>apply</code> y una función anónima, obtener los resultados solicitados del ejercicio <a href="#11">11</a>.</p></li>
 <li><p>Obtener el máximo y mínimo de cada uno de los elementos en la lista del ejercicio <a href="#13">13</a>.</p></li>
-<li><p>Crear una función que acepte una matriz y devuleva una lista con dos elementos: “StatsColumns” y “StatsRows”; los cuales deben ser listas y contener los resultados de aplicar las funciones <code>sum()</code>, <code>prod()</code>, <code>sqrt(sum())</code> y <code>cumsum()</code> por renglones y columnas.</p></li>
+<li><p><a id="45"></a>Crear una función que acepte una matriz y devuleva una lista con dos elementos: “StatsColumns” y “StatsRows”; los cuales deben ser listas y contener los resultados de aplicar las funciones <code>sum()</code>, <code>prod()</code>, <code>sqrt(sum())</code> y <code>cumsum()</code> por renglones y columnas.</p></li>
+</ol>
+<hr />
+<ol start="46" style="list-style-type: decimal">
+<li><p>Comparar la función del ejercicio <a href="#20">20</a> con la función <code>sum()</code> con <code>bench::mark()</code>.</p></li>
+<li><p>Obtener la unión, intersección y diferencia del siguiente conjunto de letras.</p></li>
+</ol>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb210-2" data-line-number="2">MixLetters &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="kw">c</span>(LETTERS, letters),<span class="dt">size =</span> <span class="dv">30</span>)</a></code></pre></div>
+<ol start="48" style="list-style-type: decimal">
+<li><p>Buscar algún data frame del paquete <code>datasets</code>. Guardar en una variable los primeros 10 registros y en otra los últimos 10.</p></li>
+<li><p>Verifica el siguiente resultado usando la función <code>integrate()</code>.</p></li>
+</ol>
+<!-- ```{r} -->
+<!-- sinpi <- function(x) sin(pi*x) -->
+<!-- integrate(sinpi, lower = 0, upper = 1) -->
+<!-- ``` -->
+<p><span class="math display">\[
+\int_0^1sin(\pi x)dx = \frac{2}{\pi}
+\]</span></p>
+<ol start="50" style="list-style-type: decimal">
+<li>Verifica con la función <code>integrate()</code> que la famosa función de densidad de una normal integra <span class="math inline">\(1\)</span> en todo su rango. A continuación se deja dicha función y si se desea basta con usar los parámetros de una normal estándar (<span class="math inline">\(\sigma = 1\)</span> y <span class="math inline">\(\mu = 0\)</span>).</li>
+</ol>
+<p><span class="math display">\[
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\]</span></p>
+<!-- ```{r} -->
+<!-- normal <- function(x) (1/sqrt(2*pi))*exp(-(x)^2/(2)) -->
+<!-- integrate(normal, lower = -Inf, upper = Inf) -->
+<!-- ``` -->
+<ol start="51" style="list-style-type: decimal">
+<li><p>Utilizar la función <code>bench::mark()</code> para comparar la rapidez entre las funciones <code>rowSums()</code> y <code>apply(sum)</code> en una matriz numérica.</p></li>
+<li><p>Obtener la suma y producto acumulado de los primeros 100 números naturales.</p></li>
+</ol>
+<!-- ```{r} -->
+<!-- set.seed(20) -->
+<!-- write_csv(data.frame(Index_Names = sample(LETTERS, replace = T, size = 100), -->
+<!--            Price = sample(((1:10/4)+sample(1:100, 1)), size = 100, replace = T), -->
+<!--            Size = sample(((1:10/4)+sample(1:100, 1)), size = 100, replace = T), -->
+<!--            Den = sample(((1:10/4)+sample(1:100, 1)), size = 100, replace = T), -->
+<!--            H = sample(((1:10/4)+sample(1:100, 1)), size = 100, replace = T)), "Data_fake.csv") -->
+<!-- ``` -->
+<ol start="53" style="list-style-type: decimal">
+<li><p>Dentro del repositorio de este proyecto se encuentra el archivo <em>Data_fake.csv</em>. Este debe cargarse en la sesión actual de R y guardarse como un data frame con el nombre de <code>Data_fake</code>.</p></li>
+<li><p>Del data frame <code>Data_fake</code> obtener por columna el mínimo, máximo y mediana con alguna función de la familia apply en aquellas columnas que sea posible.</p></li>
+<li><p>Usar alguna de las funciones resumen en <code>Data_fake</code>.</p></li>
+<li><p>Crear una función que acepte un data frame como input y devuelva una lista con dos elementos; el primero será un data frame con solo aquellas variables que sean de tipo categóricas sobre el input y la segunda entrada de la lista de retorno un data frame con las variables numéricas.</p></li>
+<li><p>Utilizando la función anterior sobre <code>Data_fake</code>, obtener el data frame con solo variables numéricas y aplicar la función del inciso <a href="#45">45</a>.</p></li>
+<li><p>Análogo a lo anterior, obtener el data frame con solo variables numéricas de <code>Data_fake</code> y dividir cada variable en 5 intervalos.</p></li>
+<li><p>Utilizar alguna función de la familia apply para aplicar la función <code>table()</code> sobre cada una de las variables del data frame <code>Data_fake</code>.</p></li>
+<li><p>Con los resultados anteriores, obtener aquellos elementos que son más recurrentes.</p></li>
 </ol>
 <div id="fuentes-y-bibliografía-adicional" class="section level3">
 <h3>Fuentes y bibliografía adicional:</h3>
